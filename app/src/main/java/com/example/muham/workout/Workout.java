@@ -1,5 +1,7 @@
 package com.example.muham.workout;
 
+import java.util.ArrayList;
+
 class Exercise{
     //fill later for testing
 }
@@ -7,7 +9,7 @@ class Exercise{
 public class Workout {
     String name;
     int Date;
-    Exercise ex[];
+    ArrayList<Exercise> ex;
     int rest;
 
     public Workout(String name){
@@ -15,26 +17,22 @@ public class Workout {
     }
 
     private void addExercise(Exercise exercise){
-        this.ex[ex.length] = exercise;
+        this.ex.add(exercise);
     }
 
     private void delExercise(int index){
+        this.ex.remove(index);
     }
-
     private void moveExerciseUp(int index){
-        if(index == 0)
-            return;
-        Exercise temp = this.ex[index - 1];
-        this.ex[index - 1] = this.ex[index];
-        this.ex[index] = temp;
+        Exercise temp = this.ex.get(index - 1);
+        this.ex.set((index - 1), this.ex.get(index));
+        this.ex.set(index, temp);
     }
 
     private void moveExerciseDown(int index){
-        if(index >= this.ex.length)
-            return;
-        Exercise temp = this.ex[index + 1];
-        this.ex[index + 1] = this.ex[index];
-        this.ex[index] = temp;
+        Exercise temp = this.ex.get(index + 1);
+        this.ex.set((index + 1), this.ex.get(index));
+        this.ex.set(index, temp);
     }
 
     private void save(){
